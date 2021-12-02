@@ -14,7 +14,6 @@ export interface Route {
 export class LayoutComponent {
   routes: Route[] = [
     { link: '/', title: 'Home', exact: true },
-    { link: '/todos', title: 'Todos' },
     { link: '/organizer', title: 'Organizer' }
   ]
 }

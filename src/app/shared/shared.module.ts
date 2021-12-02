@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { CamelCasePipe } from '~/pipes/camel-case.pipe'
 import { FilterPipe } from '~/pipes/filter.pipe'
@@ -16,6 +17,7 @@ import { LayoutComponent } from '~/components/layout/layout.component'
   ],
   imports: [
     RouterModule,
+    ReactiveFormsModule,
     CommonModule
   ],
   exports: [
@@ -23,7 +25,8 @@ import { LayoutComponent } from '~/components/layout/layout.component'
     FilterPipe,
     MomentPipe,
     LayoutComponent,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule {}
