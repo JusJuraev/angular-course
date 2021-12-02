@@ -1,0 +1,32 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  header {
+    align-items: center;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    height: 50px;
+
+    nav {
+      display: flex;
+
+      a {
+        color: inherit;
+        font-weight: 500;
+        margin: 0 .5rem;
+
+        &.active {
+          color: #b3bdc3;
+        }
+      }
+    }
+  }
+}
+
+.content {
+  flex-grow: 1;
+  padding: 1rem 0;
+}

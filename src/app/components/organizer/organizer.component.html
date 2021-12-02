@@ -1,0 +1,40 @@
+<section>
+  <header>
+    Organizer: <strong>{{ dateService.date | async | moment:'DD.MM.YYYY' }}</strong>
+    <hr>
+  </header>
+
+  <main>
+    <div *ngIf="!loading; else loadingBlock">
+      <ul *ngIf="tasks.length; else noTasks">
+        <li class="task" *ngFor="let task of tasks; let i = index">
+        <span>
+          <strong>{{ i + 1 }}</strong>
+          {{ task.title }}
+        </span>
+
+          <button class="btn btn-danger" (click)="remove(task)">
+            Remove
+          </button>
+        </li>
+      </ul>
+      <ng-template #noTasks>
+        <p>No tasks yet for this day...</p>
+      </ng-template>
+    </div>
+
+    <ng-template #loadingBlock>
+      <p>Loading tasks...</p>
+    </ng-template>
+  </main>
+
+  <footer>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input type="text" placeholder="Enter new task" formControlName="title">
+
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block">
+        Add
+      </button>
+    </form>
+  </footer>
+</section>

@@ -1,0 +1,50 @@
+table {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  width: 100%;
+
+  td, th {
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+  }
+
+  th {
+    background: var(--light-gray);
+  }
+
+  td {
+    line-height: initial;
+    text-align: center;
+    transition: all 200ms;
+
+    &.disabled {
+      opacity: 0.5;
+    }
+
+    &:hover:not(.disabled) {
+      background: #eee;
+      cursor: pointer;
+    }
+  }
+
+  .day {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    height: 25px;
+    width: 25px;
+
+    &.active {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    &.selected {
+      background: var(--primary-color);
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}

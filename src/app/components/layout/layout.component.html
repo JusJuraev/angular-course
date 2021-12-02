@@ -1,0 +1,19 @@
+<div class="layout">
+  <header>
+    <div class="container">
+      <nav>
+        <a
+          *ngFor="let route of routes"
+          [routerLink]="route.link"
+          [routerLinkActiveOptions]="{exact: route.exact || false}"
+          routerLinkActive="active">
+          {{ route.title }}
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<app-layout>
+  <div class="container">
+    <h1>Todos</h1>
+
+    <div class="card">
+      <div class="form-control">
+        <input type="text" placeholder="Название" [(ngModel)]="todoTitle">
+      </div>
+      <div class="form-control">
+        <button class="btn" (click)="addTodo()">Добавить</button>
+        <button class="btn" (click)="todosService.fetchTodos()">Загрузить</button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div *ngIf="todosService.loading; else todoList">
+      <p>Загрузка...</p>
+    </div>
+
+    <ng-template #todoList>
+      <div *ngIf="todosService.todos.length; else noTodos">
+        <div class="card" *ngFor="let todo of todosService.todos">
+          <p>
+            <span [class.completed]="todo.completed">{{ todo.title | titlecase }}</span>
+            <span>
+        <button
+          class="btn btn-danger"
+          (click)="todosService.deleteTodo(todo.id)">
+          Удалить
+        </button>
+        <button
+          class="btn"
+          [disabled]="todo.completed"
+          (click)="todosService.completeTodo(todo.id)">
+          Завершить
+        </button>
+      </span>
+          </p>
+        </div>
+      </div>
+
+      <ng-template #noTodos>
+        <p>Нет элементов...</p>
+      </ng-template>
+    </ng-template>
+  </div>
+
+</app-layout>

@@ -1,0 +1,28 @@
+section {
+  border: 1px solid var(--primary-color);
+  padding: 1rem;
+
+  header {
+    margin-bottom: 1rem;
+  }
+
+  footer {
+    margin-top: 1rem;
+
+    form input {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.task {
+  align-items: center;
+  border: 1px solid var(--light-gray);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+
+  &:not(:last-of-type) {
+    margin-bottom: 0.5rem;
+  }
+}
