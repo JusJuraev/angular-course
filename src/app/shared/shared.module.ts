@@ -14,14 +14,15 @@ import { LayoutComponent } from '~/components/layout/layout.component'
     MomentPipe,
     LayoutComponent
   ],
+  imports: [
+    RouterModule,
+    CommonModule
+  ],
   exports: [
     CamelCasePipe,
     FilterPipe,
     MomentPipe,
-    LayoutComponent
-  ],
-  imports: [
-    RouterModule,
+    LayoutComponent,
     CommonModule
   ]
 })
