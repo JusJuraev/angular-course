@@ -1,17 +1,18 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "~/components/*": ["./src/app/components/*"],
-      "~/directives/*": ["./src/app/directives/*"],
-      "~/models/*": ["./src/app/models/*"],
-      "~/pipes/*": ["./src/app/pipes/*"],
-      "~/routes/*": ["./src/app/routes/*"],
-      "~/services/*": ["./src/app/services/*"],
-      "~/shared/*": ["./src/app/shared/*"],
-      "~/utils/*": ["./src/app/utils/*"]
+      "~/admin/*": ["./app/admin/*"],
+      "~/components/*": ["./app/components/*"],
+      "~/directives/*": ["./app/directives/*"],
+      "~/environments/*": ["./environments/*"],
+      "~/models/*": ["./app/models/*"],
+      "~/pipes/*": ["./app/pipes/*"],
+      "~/routes/*": ["./app/routes/*"],
+      "~/services/*": ["./app/services/*"],
+      "~/shared/*": ["./app/shared/*"],
+      "~/utils/*": ["./app/utils/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

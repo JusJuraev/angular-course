@@ -11,6 +11,16 @@ const routes: Routes = [
     path: 'organizer',
     loadChildren: () => import('~/routes/organizer-page/organizer-page.module')
       .then(m => m.OrganizerPageModule)
+  },
+  {
+    path: 'posts',
+    loadChildren: () => import('~/routes/posts-page/posts-page.module')
+      .then(m => m.PostsPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('~/admin/admin.module')
+      .then(m => m.AdminModule)
   }
 ]
 
