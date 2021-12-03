@@ -4,7 +4,7 @@ import { Observable, Subject, tap } from 'rxjs'
 import { AuthResponse, User } from '~/models/user'
 import { environment } from '~/environments/environment'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   public error$: Subject<string> = new Subject<string>()
 

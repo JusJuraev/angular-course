@@ -1,6 +1,7 @@
 import { Environment } from './interface'
+import { commonEnv } from './common'
 
 export const environment: Environment = {
-  apiKey: 'AIzaSyDlHRcnoXb9P2xEtv6LLlHFrI31o_I7KJI',
+  ...commonEnv,
   production: true
 }

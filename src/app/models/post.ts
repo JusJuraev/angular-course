@@ -1,5 +1,11 @@
 export interface Post {
+  id: string
   title: string
   text: string
-  id?: number
+  author: string
+  date: Date
+}
+
+export interface PostCreateResponse {
+  name: string
 }

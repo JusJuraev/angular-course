@@ -8,11 +8,11 @@
   <div class="form-control">
     <label for="email">Email</label>
     <input id="email" type="email" formControlName="email">
-    <div class="validation" *ngIf="controlHasError('email')">
-      <small *ngIf="getControlError('email', 'required')">
+    <div class="validation" *ngIf="formService.controlHasError(form, 'email')">
+      <small *ngIf="formService.getControlError(form, 'email', 'required')">
         Email is required
       </small>
-      <small *ngIf="getControlError('email', 'email')">
+      <small *ngIf="formService.getControlError(form, 'email', 'email')">
         Enter valid email
       </small>
     </div>
@@ -21,8 +21,8 @@
   <div class="form-control">
     <label for="password">Password</label>
     <input id="password" type="password" formControlName="password">
-    <div class="validation" *ngIf="controlHasError('password')">
-      <small *ngIf="getControlError('password', 'required')">
+    <div class="validation" *ngIf="formService.controlHasError(form, 'password')">
+      <small *ngIf="formService.getControlError(form, 'password', 'required')">
         Password is required
       </small>
     </div>

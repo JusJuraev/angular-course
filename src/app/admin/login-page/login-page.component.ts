@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 
 import { AuthService } from '~/admin/shared/services/auth.service'
+import { FormService } from '~/admin/shared/services/form.service'
 import { User } from '~/models/user'
 
 @Component({
@@ -14,7 +15,11 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup
   submitting = false
 
-  constructor (public authService: AuthService, private router: Router) {
+  constructor (
+    public authService: AuthService,
+    public formService: FormService,
+    private router: Router
+  ) {
   }
 
   ngOnInit (): void {
@@ -22,14 +27,6 @@ export class LoginPageComponent implements OnInit {
       email: new FormControl('jus.juraev@gmail.com', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
-  }
-
-  controlHasError (controlName: string): boolean {
-    return !!this.form.get(controlName)?.invalid && !!this.form.get(controlName)?.touched
-  }
-
-  getControlError (controlName: string, errorType: string): string {
-    return this.form.get(controlName)?.errors?.[errorType]
   }
 
   onSubmit () {

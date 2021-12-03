@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { Subscription } from 'rxjs'
-import { DateService } from '~/services/date.service'
-import { TasksService } from '~/services/tasks.service'
+import { DateService } from '~/shared/services/date.service'
+import { TasksService } from '~/shared/services/tasks.service'
 import { Task } from '~/models/task'
 
 @Component({

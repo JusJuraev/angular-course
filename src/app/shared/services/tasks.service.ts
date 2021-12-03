@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { map, Observable } from 'rxjs'
 import * as moment from 'moment'
 import { Task } from '~/models/task'
+import { environment } from '~/environments/environment'
 
 interface CreateResponse {
   name: string
@@ -10,7 +11,7 @@ interface CreateResponse {
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {
-  static url = 'https://angular-organizer-c48bf-default-rtdb.firebaseio.com/tasks'
+  static url = `${environment.apiUrl}/tasks`
 
   constructor (private http: HttpClient) {}
 

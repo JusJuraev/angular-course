@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
+import { QuillModule } from 'ngx-quill'
 
 import { CamelCasePipe } from '~/pipes/camel-case.pipe'
 import { FilterPipe } from '~/pipes/filter.pipe'
@@ -20,9 +21,11 @@ import { MainLayoutComponent } from '~/components/main-layout/main-layout.compon
   ],
   imports: [
     RouterModule,
+    FormsModule,
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+    QuillModule.forRoot()
   ],
   exports: [
     CamelCasePipe,
@@ -31,8 +34,10 @@ import { MainLayoutComponent } from '~/components/main-layout/main-layout.compon
     LayoutComponent,
     MainLayoutComponent,
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    QuillModule
   ]
 })
 export class SharedModule {

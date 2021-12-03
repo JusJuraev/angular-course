@@ -1,15 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { PostsService } from '~/shared/services/posts.service'
+import { Post } from '~/models/post'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss']
 })
-export class DashboardPageComponent implements OnInit {
+export class DashboardPageComponent implements OnInit, OnDestroy {
+  search = ''
+  loading = false
+  posts: Post[] = []
+  pSub: Subscription
+  dSub: Subscription
 
-  constructor() { }
+  constructor(public postsService: PostsService) { }
 
   ngOnInit(): void {
+    this.loading = true
+    this.pSub = this.postsService.getALl().subscribe(posts => {
+      this.posts = posts
+      this.loading = false
+    })
   }
 
+  remove (id: string) {
+    this.dSub = this.postsService.remove(id as string).subscribe(() => {
+      this.posts = this.posts.filter(p => p.id !== id)
+    })
+  }
+
+  ngOnDestroy () {
+    if (this.pSub) this.pSub.unsubscribe()
+    if (this.dSub) this.dSub.unsubscribe()
+  }
 }
