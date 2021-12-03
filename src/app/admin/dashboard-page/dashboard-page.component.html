@@ -24,7 +24,7 @@
         <td>{{ i + 1 }}</td>
         <td>{{ post.author }}</td>
         <td>{{ post.title }}</td>
-        <td>{{ post.date | date:'short' }}</td>
+        <td>{{ post.date | date:'short':'':'ru' }}</td>
         <td>
           <button class="btn" [routerLink]="['/admin', 'post', post.id, 'edit']">
             Edit

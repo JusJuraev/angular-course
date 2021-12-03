@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { PostsService } from '~/shared/services/posts.service'
 import { ActivatedRoute, Params } from '@angular/router'
-import { Subscription } from 'rxjs'
+import { Subscription, switchMap } from 'rxjs'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { PostsService } from '~/shared/services/posts.service'
+import { FormService } from '~/admin/shared/services/form.service'
 import { Post } from '~/models/post'
+import { AlertService } from '~/admin/shared/services/alert.service'
 
 @Component({
   selector: 'app-edit-page',
@@ -11,23 +14,47 @@ import { Post } from '~/models/post'
 })
 export class EditPageComponent implements OnInit, OnDestroy {
   post: Post
-  pSub: Subscription
+  form: FormGroup
+  submitting = false
+  uSub: Subscription
 
-  constructor(
+  constructor (
     private route: ActivatedRoute,
-    private postsService: PostsService
-  ) {}
+    private postsService: PostsService,
+    public formService: FormService,
+    private alert: AlertService
+  ) {
+  }
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      const id = params['id'] as string
-      this.pSub = this.postsService.getPost(id).subscribe(post => {
+  ngOnInit (): void {
+    this.route.params.pipe(switchMap((params: Params) => {
+      const id = params['id']
+      return this.postsService.getPost(id)
+    }))
+      .subscribe(post => {
         this.post = post
+        this.form = new FormGroup({
+          title: new FormControl(post.title, Validators.required),
+          text: new FormControl(post.text, Validators.required)
+        })
       })
-    })
+  }
+
+  onSubmit () {
+    if (this.form.valid) {
+      this.submitting = true
+      this.uSub = this.postsService.update({
+        ...this.post,
+        title: this.form.value.title,
+        text: this.form.value.text
+      }).subscribe(() => {
+        this.submitting = false
+        this.alert.success('Post updated')
+      })
+    }
   }
 
   ngOnDestroy () {
-    if (this.pSub) this.pSub.unsubscribe()
+    if (this.uSub) this.uSub.unsubscribe()
   }
 }

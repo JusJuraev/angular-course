@@ -105,9 +105,8 @@ img {
 }
 
 .alert {
-  padding: 0.7rem;
-  margin: 1rem 0;
-  opacity: 0.9;
+  border-radius: 4px;
+  padding: 1rem 2rem;
   background: var(--light-gray);
   color: #333;
 }

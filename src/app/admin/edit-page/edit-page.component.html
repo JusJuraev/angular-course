@@ -1,1 +1,35 @@
-<p>edit-page works!</p>
+<ng-container *ngIf="form; else loading">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1>Edit post</h1>
+
+    <div class="form-control" [class.invalid]="formService.controlHasError(form, 'title')">
+      <label for="title">Title</label>
+      <input type="text" id="title" formControlName="title">
+      <div class="validation" *ngIf="formService.controlHasError(form, 'title')">
+        <small *ngIf="formService.getControlError(form, 'title', 'required')">
+          Enter post title
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control" [class.invalid]="formService.controlHasError(form, 'text')">
+      <label>Text</label>
+      <quill-editor formControlName="text"></quill-editor>
+      <div class="validation" *ngIf="formService.controlHasError(form, 'text')">
+        <small *ngIf="formService.getControlError(form, 'text', 'required')">
+          Enter post content
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <button class="btn btn-primary btn-block" type="submit" [disabled]="form.invalid || submitting">
+        Edit post
+      </button>
+    </div>
+  </form>
+</ng-container>
+
+<ng-template #loading>
+  <p class="text-center">Loading...</p>
+</ng-template>

@@ -1,6 +1,6 @@
 <nav class="navbar bg-primary">
   <h1>
-    <a routerLink="/posts">Admin</a>
+    <a routerLink="/">Admin</a>
   </h1>
 
   <ul *ngIf="auth.isAuthenticated()">
@@ -17,5 +17,9 @@
 </nav>
 
 <div class="container">
-  <router-outlet></router-outlet>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
+
+<app-alert></app-alert>

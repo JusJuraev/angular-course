@@ -5,8 +5,10 @@ import { RouterModule } from '@angular/router'
 import { SharedModule } from '~/shared/shared.module'
 import { FormService } from '~/admin/shared/services/form.service'
 import { AuthGuard } from '~/admin/shared/services/auth.guard'
+import { AlertService } from '~/admin/shared/services/alert.service'
 
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component'
+import { AlertComponent } from './components/alert/alert.component'
 import { LoginPageComponent } from './login-page/login-page.component'
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component'
 import { CreatePageComponent } from './create-page/create-page.component'
@@ -18,7 +20,8 @@ import { EditPageComponent } from './edit-page/edit-page.component'
     LoginPageComponent,
     DashboardPageComponent,
     CreatePageComponent,
-    EditPageComponent
+    EditPageComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,8 @@ import { EditPageComponent } from './edit-page/edit-page.component'
   exports: [RouterModule],
   providers: [
     AuthGuard,
-    FormService
+    FormService,
+    AlertService
   ]
 })
 export class AdminModule {

@@ -1,14 +1,20 @@
-<div class="post">
-  <button class="btn" [routerLink]="['/posts']">
-    Back to posts
-  </button>
+<ng-container *ngIf="post$ | async as post; else loading">
+  <div class="post">
+    <button class="btn" [routerLink]="['/posts']">
+      Back to posts
+    </button>
 
-  <div class="header">
-    <h1>Post title</h1>
-    <small>22.11.2021</small>
-  </div>
+    <div class="header">
+      <h1>{{ post.title }}</h1>
+      <small>{{ post.date | date:'medium':'':'ru' }}</small>
+    </div>
 
-  <div class="body">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur enim error impedit ipsum officia pariatur quos sequi soluta vitae? Sint.</p>
+    <div class="body">
+      <quill-view-html [content]="post.text"></quill-view-html>
+    </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #loading>
+  <p class="text-center">Loading post...</p>
+</ng-template>
