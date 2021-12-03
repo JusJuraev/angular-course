@@ -22,6 +22,11 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    if (authService.isAuthenticated()) {
+      router.navigate(['admin', 'dashboard'], {
+        replaceUrl: true
+      })
+    }
   }
 
   ngOnInit (): void {
